@@ -28,11 +28,16 @@ retired form does not either. **#3 is still open.**
 
 ## The page
 
-It is in the kb, where the kb keeps its pages. `support-kb/` is the desk's export with the page
+Delivered at the top of this repo, both files:
+
+- the `.svx`: [`4471-split.svx`](4471-split.svx)
+- the page as the desk will see it: [`4471-split.html`](4471-split.html) — rendered, one file, no server
+
+The same page lives in the kb, where the kb keeps its pages. `support-kb/` is the desk's export with the page
 added; nothing that came in the export was edited.
 
-- the `.svx`: [`support-kb/src/routes/kb/incidents/4471-split/+page.svx`](support-kb/src/routes/kb/incidents/4471-split/+page.svx)
-- as the desk will see it: [`support-kb/src/routes/kb/incidents/4471-split/page.html`](support-kb/src/routes/kb/incidents/4471-split/page.html) — rendered, one file, no server, also at [`support-kb/rendered/4471-split.html`](support-kb/rendered/4471-split.html)
+- in the kb: [`support-kb/src/routes/kb/incidents/4471-split/+page.svx`](support-kb/src/routes/kb/incidents/4471-split/+page.svx), served at `/kb/incidents/4471-split`
+- rendered there too: [`support-kb/src/routes/kb/incidents/4471-split/page.html`](support-kb/src/routes/kb/incidents/4471-split/page.html) and [`support-kb/rendered/4471-split.html`](support-kb/rendered/4471-split.html)
 
 It lives in the kb at `/kb/incidents/4471-split` and appears in the kb index. It is signed
 `M-rROBOT`, so it carries desk ref **DR-T8HP-6VA9**.
