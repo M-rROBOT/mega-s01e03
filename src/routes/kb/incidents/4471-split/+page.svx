@@ -1,0 +1,87 @@
+---
+layout: runbook
+title: '#4471 · three bugs, not one'
+owner: M-rROBOT
+status: open
+reviewed: 2026-10-28
+signature: M-rROBOT
+---
+
+<script>
+  import TicketSplit from '#lib/kb/TicketSplit.svelte';
+  import IntakeAgreement from '#lib/kb/IntakeAgreement.svelte';
+  import Callout from '#lib/kb/Callout.svelte';
+  import RenderStamp from '#lib/kb/RenderStamp.svelte';
+</script>
+
+[#4471](/kb/incidents/4471) is marked known, with one issue and one fix queued. The queue it was
+built from holds three bugs. Two of them will survive that fix and keep sending reports.
+
+<Callout kind="warn">
+Three problems, three tickets. Shipping the queued parser fix closes the largest one and leaves
+the other two open.
+</Callout>
+
+## What is in the ticket
+
+<TicketSplit ticket={4471} />
+
+## Why the desk saw one bug
+
+Nobody misread anything. Three things each hid part of the queue, and each of them is working as
+designed.
+
+**Merging on subject.** [Decision 0001](/kb/decisions/0001-dedupe-by-subject) merges a report
+into an open ticket when the subject matches, so nobody has to read the body. Twelve subject
+lines cover all of these reports, and every one of them says the same thing: the day is wrong.
+Three bugs share those twelve subjects, so three bugs share one ticket. The decision names this
+as a consequence and accepts it — engineering merges them later. Nobody did.
+
+**The tag is a guess.** Intake tags a report from the reporter's browser the moment it arrives.
+The cause depends on the tenant: the locale they write dates in, and the booking form they run.
+Those two are not the same question, and they disagree often.
+
+<IntakeAgreement ticket={4471} />
+
+**A footnote is not a ticket.** The page for #4471 renders its causes from the same data this
+page does, and it has been printing the second bug on its own row, labelled *not this ticket — no
+ticket of its own*, since it was written. It also footnotes five reports as a one-day move and
+then counts them under the parser anyway, because `causes.ts` has no rule that can see a one-day
+move. The table was right. It was read as a table about one bug.
+
+## The three
+
+**The shared parser reads month first.** Every tenant on file writes the day first, so dates come
+out with day and month swapped: 7 April goes out as 4 July. This is the bug #4471 names, and the
+fix in the queue is for this one.
+
+**`booking-v3` prints the wrong hint.** Its form prints `MM/DD/YYYY` under the date field. Its
+tenants are day-first, so their people type what the hint tells them, month first, and the form
+reads it the tenant's way. The date is wrong before the shared parser sees it. Fixing the parser
+cannot touch this: the hint has to change, and the form has to parse with the tenant's locale.
+
+**Five invites move by one day.** A month flip cannot move a date by one day. These five describe
+a zone, not a swap: one meeting held twice because Lisbon got Tuesday and Toronto got Monday, one
+tenant off by a day in June and no other month, one invite that arrived before the booking was
+made. The desk had already read them and written the ids down. They need the booking's zone
+carried with the booking, and the DST boundaries checked.
+
+## What we changed in the kb
+
+Nothing. #4471 stands as the desk's record of the queue, and
+[decision 0001](/kb/decisions/0001-dedupe-by-subject) stands as accepted. This page is new, and
+the rule that splits the queue is new: `src/lib/kb/split-4471.ts` adds the one-day group that
+`causes.ts` cannot see, and imports `causes.ts` for the rest rather than editing it. Every number
+on this page is computed from the export at render time.
+
+## Lessons
+
+- Merging on subject counts a queue. It does not tell you how many bugs are in it. One of those
+  is what engineering needs.
+- A table that prints *no ticket of its own* is asking for a ticket. Read what the page renders,
+  not only what it says.
+- Intake's tag is a guess from the browser. Where it disagrees with the tenant, the tenant wins.
+- When the desk reads a report differently from the rule, the note belongs in the rule, not under
+  the table.
+
+<RenderStamp {signature} />
