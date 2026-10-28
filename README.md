@@ -28,8 +28,11 @@ retired form does not either. **#3 is still open.**
 
 ## The page
 
-- source: [`src/routes/kb/incidents/4471-split/+page.svx`](src/routes/kb/incidents/4471-split/+page.svx)
-- as the desk sees it: [`rendered/4471-split.html`](rendered/4471-split.html) — one file, no server
+It is in the kb, where the kb keeps its pages. `support-kb/` is the desk's export with the page
+added; nothing that came in the export was edited.
+
+- the `.svx`: [`support-kb/src/routes/kb/incidents/4471-split/+page.svx`](support-kb/src/routes/kb/incidents/4471-split/+page.svx)
+- as the desk will see it: [`support-kb/src/routes/kb/incidents/4471-split/page.html`](support-kb/src/routes/kb/incidents/4471-split/page.html) — rendered, one file, no server, also at [`support-kb/rendered/4471-split.html`](support-kb/rendered/4471-split.html)
 
 It lives in the kb at `/kb/incidents/4471-split` and appears in the kb index. It is signed
 `M-rROBOT`, so it carries desk ref **DR-T8HP-6VA9**.
@@ -39,7 +42,7 @@ It lives in the kb at `/kb/incidents/4471-split` and appears in the kb index. It
 Nothing is typed into a paragraph. Every number on the page is computed from the export at
 render time, which is the kb's own rule.
 
-The desk's `src/lib/kb/causes.ts` already splits the queue two ways: it asks the platform whether
+The desk's `support-kb/src/lib/kb/causes.ts` already splits the queue two ways: it asks the platform whether
 a tenant's locale is day-first, then separates reports that came through a `booking-v3` form
 (`hint`) from the rest (`parser`). That gives 379 and 33, and the existing `CauseTable` on
 [`/kb/incidents/4471`](src/routes/kb/incidents/4471/+page.svx) has been printing the `hint` row
@@ -47,8 +50,8 @@ as *"not this ticket — no ticket of its own"* since the page was written.
 
 `causes.ts` cannot see the third bug. It places a report by tenant locale and channel, and a
 one-day move looks like everything else, so five reports that describe a shifted zone land under
-`parser` and get footnoted. [`src/lib/kb/split-4471.ts`](src/lib/kb/split-4471.ts) adds that one
-rule — the ids the desk wrote into `src/lib/data/desk-notes.json` — and imports `causes.ts` for
+`parser` and get footnoted. [`support-kb/src/lib/kb/split-4471.ts`](support-kb/src/lib/kb/split-4471.ts) adds that one
+rule — the ids the desk wrote into `support-kb/src/lib/data/desk-notes.json` — and imports `causes.ts` for
 the rest rather than editing it. 379 − 5 = 374.
 
 I checked the desk's list of five against all 412 bodies: 403 contain a date pair with day and
@@ -69,16 +72,19 @@ own rule is that an accepted decision is replaced, never edited. The new page, `
 
 ## Running it
 
-The kb export is `src/` only. `svelte.config.js`, `vite.config.js` and `src/app.html` are the
-frame it was exported out of, added back so the pages render.
+The export is `support-kb/README.md` and `support-kb/src/`. `svelte.config.js`,
+`vite.config.js`, `src/app.html` and the two files under `src/routes/` that are not kb pages are
+the frame it was exported out of, added back so the pages render.
 
 ```bash
+cd support-kb
 npm install
 npm run build                                               # prerenders the whole kb to build/
 node scripts/render-page.mjs kb/incidents/4471-split rendered/4471-split.html
 ```
 
-[`kb-README.md`](kb-README.md) is the README that came with the export.
+[`support-kb/README.md`](support-kb/README.md) is the README that came with the export,
+unchanged.
 
 ---
 
