@@ -33,7 +33,10 @@ Delivered at the top of this repo, both files:
 - the `.svx`: [`4471-split.svx`](4471-split.svx)
 - the page as the desk will see it: [`4471-split.html`](4471-split.html) — rendered, one file, no server
 
-The same page lives in the kb, where the kb keeps its pages. `support-kb/` is the desk's export with the page
+The same page lives in the kb, where the kb keeps its pages, and the kb is built out so the
+page sits at the route the desk reads it at:
+[`support-kb/build/kb/incidents/4471-split.html`](support-kb/build/kb/incidents/4471-split.html).
+The export came as files, not a site, so the built site is what the desk would see. `support-kb/` is the desk's export with the page
 added; nothing that came in the export was edited.
 
 - in the kb: [`support-kb/src/routes/kb/incidents/4471-split/+page.svx`](support-kb/src/routes/kb/incidents/4471-split/+page.svx), served at `/kb/incidents/4471-split`

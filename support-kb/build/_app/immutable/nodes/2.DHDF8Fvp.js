@@ -1,0 +1,1 @@
+import"../chunks/Bzak7iHL.js";import"../chunks/DU3z4mco.js";import{a as r,f as t}from"../chunks/1edvsMcN.js";var a=t('<p style="font: 16px system-ui; padding: 2rem"><a href="/kb">support desk · kb</a></p>');function n(p){var o=a();r(p,o)}export{n as component};
