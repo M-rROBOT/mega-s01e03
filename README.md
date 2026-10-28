@@ -6,13 +6,25 @@ bug and adds a page to the kb that says so.
 
 ## The three tickets
 
-| ticket | problem | reports |
-|---|---|---|
-| [#1](https://github.com/M-rROBOT/mega-s01e03/issues/1) | the shared date parser reads day-first dates month first | **374** |
-| [#2](https://github.com/M-rROBOT/mega-s01e03/issues/2) | `booking-v3` prints an `MM/DD/YYYY` date hint to day-first tenants | **33** |
-| [#3](https://github.com/M-rROBOT/mega-s01e03/issues/3) | invites land one day out — a timezone/DST offset, not a month flip | **5** |
+| ticket | problem | reports | where it stands |
+|---|---|---|---|
+| [#1](https://github.com/M-rROBOT/mega-s01e03/issues/1) | the shared date parser reads day-first dates month first | **374** | closed — fixed |
+| [#2](https://github.com/M-rROBOT/mega-s01e03/issues/2) | `booking-v3` prints an `MM/DD/YYYY` date hint to day-first tenants | **33** | closed — won't fix |
+| [#3](https://github.com/M-rROBOT/mega-s01e03/issues/3) | invites land one day out — a timezone/DST offset, not a month flip | **5** | **open** |
 
-374 + 33 + 5 = 412. The queued fix is for #1 alone.
+374 + 33 + 5 = 412.
+
+## What the desk did, and what it missed
+
+Engineering closed #4471 on 5 October with two outcomes, and both are right:
+
+- `parser` — **fixed**, `fix(dates): parse dd/mm for eu locales`
+- `hint` — **won't fix**, `booking-v3` form retired
+
+Tickets #1 and #2 are closed here to match. The third bug was not in the update. Inside #4471 it
+was never a bug of its own — only five reports counted under the parser with a footnote under the
+table — so closing #4471 passed over it. The parser fix does not touch a timezone offset, and a
+retired form does not either. **#3 is still open.**
 
 ## The page
 

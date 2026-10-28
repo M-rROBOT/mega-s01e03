@@ -14,17 +14,28 @@ signature: M-rROBOT
   import RenderStamp from '#lib/kb/RenderStamp.svelte';
 </script>
 
-[#4471](/kb/incidents/4471) is marked known, with one issue and one fix queued. The queue it was
-built from holds three bugs. Two of them will survive that fix and keep sending reports.
+[#4471](/kb/incidents/4471) was merged as one bug, marked known, and closed on 5 October. The
+queue it was built from holds three. Engineering's update covers two of them.
 
 <Callout kind="warn">
-Three problems, three tickets. Shipping the queued parser fix closes the largest one and leaves
-the other two open.
+One bug is still open. It was never a ticket of its own inside #4471, so closing #4471 did not
+reach it, and the parser fix does not touch it.
 </Callout>
 
 ## What is in the ticket
 
 <TicketSplit ticket={4471} />
+
+## Where the desk got to
+
+Engineering closed #4471 on 5 October with two outcomes, and both are right. The parser fix
+shipped: `fix(dates): parse dd/mm for eu locales`. The hint bug was marked won't fix, because
+`booking-v3` is retired and a retired form cannot print the wrong hint again. Those two tickets
+are closed here too.
+
+The third was not in the update. Inside #4471 it was never a bug — it was five reports counted
+under the parser with a footnote under the table — so the close passed over it. The zone is still
+wrong. Ticket **#3** stays open.
 
 ## Why the desk saw one bug
 
@@ -53,31 +64,35 @@ move. The table was right. It was read as a table about one bug.
 
 **The shared parser reads month first.** Every tenant on file writes the day first, so dates come
 out with day and month swapped: 7 April goes out as 4 July. This is the bug #4471 names, and the
-fix in the queue is for this one.
+fix that shipped is for this one.
 
-**`booking-v3` prints the wrong hint.** Its form prints `MM/DD/YYYY` under the date field. Its
-tenants are day-first, so their people type what the hint tells them, month first, and the form
-reads it the tenant's way. The date is wrong before the shared parser sees it. Fixing the parser
-cannot touch this: the hint has to change, and the form has to parse with the tenant's locale.
+**`booking-v3` prints the wrong hint.** Its form printed `MM/DD/YYYY` under the date field. Its
+tenants are day-first, so their people typed what the hint told them, month first, and the form
+read it the tenant's way. The date was wrong before the shared parser saw it — which is why
+fixing the parser would not have closed these 33 reports, and why retiring the form does.
 
 **Five invites move by one day.** A month flip cannot move a date by one day. These five describe
 a zone, not a swap: one meeting held twice because Lisbon got Tuesday and Toronto got Monday, one
 tenant off by a day in June and no other month, one invite that arrived before the booking was
 made. The desk had already read them and written the ids down. They need the booking's zone
-carried with the booking, and the DST boundaries checked.
+carried with the booking, and the DST boundaries checked. Nothing in the 5 October update does
+either.
 
 ## What we changed in the kb
 
 Nothing. #4471 stands as the desk's record of the queue, and
-[decision 0001](/kb/decisions/0001-dedupe-by-subject) stands as accepted. This page is new, and
-the rule that splits the queue is new: `src/lib/kb/split-4471.ts` adds the one-day group that
-`causes.ts` cannot see, and imports `causes.ts` for the rest rather than editing it. Every number
-on this page is computed from the export at render time.
+[decision 0001](/kb/decisions/0001-dedupe-by-subject) stands as accepted — the kb's own rule is
+that an accepted decision is replaced, never edited. This page is new, and the rule that splits
+the queue is new: `src/lib/kb/split-4471.ts` adds the one-day group that `causes.ts` cannot see,
+and imports `causes.ts` for the rest rather than editing it. Every number on this page is
+computed from the export at render time.
 
 ## Lessons
 
 - Merging on subject counts a queue. It does not tell you how many bugs are in it. One of those
   is what engineering needs.
+- A ticket closing is not the bugs inside it closing. #4471 is closed and one of its bugs is
+  still shipping.
 - A table that prints *no ticket of its own* is asking for a ticket. Read what the page renders,
   not only what it says.
 - Intake's tag is a guess from the browser. Where it disagrees with the tenant, the tenant wins.
