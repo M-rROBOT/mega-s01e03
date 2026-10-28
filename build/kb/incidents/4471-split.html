@@ -7,18 +7,18 @@
 		<link href="../../_app/immutable/assets/runbook.9BJ9BomY.css" rel="stylesheet">
 		<link href="../../_app/immutable/assets/Callout.89E4ZsOX.css" rel="stylesheet">
 		<link href="../../_app/immutable/assets/6.DMW0Lb-D.css" rel="stylesheet">
-		<link rel="modulepreload" href="../../_app/immutable/entry/start.XLqwjsm9.js">
-		<link rel="modulepreload" href="../../_app/immutable/chunks/D23ns5Oo.js">
+		<link rel="modulepreload" href="../../_app/immutable/entry/start.B_q1hwfL.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/BRBap6uC.js">
 		<link rel="modulepreload" href="../../_app/immutable/chunks/F2PkAGh1.js">
 		<link rel="modulepreload" href="../../_app/immutable/chunks/1edvsMcN.js">
 		<link rel="modulepreload" href="../../_app/immutable/chunks/QyjSYpE6.js">
-		<link rel="modulepreload" href="../../_app/immutable/entry/app.CA1q5qjd.js">
+		<link rel="modulepreload" href="../../_app/immutable/entry/app.-bDmdTVF.js">
 		<link rel="modulepreload" href="../../_app/immutable/chunks/Bzak7iHL.js">
 		<link rel="modulepreload" href="../../_app/immutable/chunks/zd0ss9KH.js">
 		<link rel="modulepreload" href="../../_app/immutable/nodes/0.DziG8fkm.js">
 		<link rel="modulepreload" href="../../_app/immutable/chunks/DpklkhKa.js">
-		<link rel="modulepreload" href="../../_app/immutable/nodes/6.CbE66VCl.js">
-		<link rel="modulepreload" href="../../_app/immutable/chunks/mYwp7kFJ.js">
+		<link rel="modulepreload" href="../../_app/immutable/nodes/6.BNimzFB6.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/CAh3Ptil.js">
 		<link rel="modulepreload" href="../../_app/immutable/chunks/DU3z4mco.js">
 		<link rel="modulepreload" href="../../_app/immutable/chunks/idCm7sZx.js">
 		<link rel="modulepreload" href="../../_app/immutable/chunks/3phpp-iJ.js">
@@ -54,7 +54,9 @@ a zone, not a swap: one meeting held twice because Lisbon got Tuesday and Toront
 tenant off by a day in June and no other month, one invite that arrived before the booking was
 made. The desk had already read them and written the ids down. They need the booking’s zone
 carried with the booking, and the DST boundaries checked. Nothing in the 5 October update does
-either.</p> <h2>What we changed in the kb</h2> <p>Nothing. #4471 stands as the desk’s record of the queue, and <a href="/kb/decisions/0001-dedupe-by-subject">decision 0001</a> stands as accepted — the kb’s own rule is
+either.</p> <h2>What we changed in the kb</h2> <p>One link. <a href="/kb/incidents/4471">#4471</a> now points here, because a page nobody can reach from the
+page they are reading is not in the kb. Otherwise nothing: #4471 stands as the desk’s record of
+the queue, and <a href="/kb/decisions/0001-dedupe-by-subject">decision 0001</a> stands as accepted — the kb’s own rule is
 that an accepted decision is replaced, never edited. This page is new, and the rule that splits
 the queue is new: <code>src/lib/kb/split-4471.ts</code> adds the one-day group that <code>causes.ts</code> cannot see,
 and imports <code>causes.ts</code> for the rest rather than editing it. Every number on this page is
@@ -66,15 +68,15 @@ the table.</li></ul> <!--[--><p class="stamp svelte-5qojh0">desk ref <b class="s
 			
 			<script>
 				{
-					__sveltekit_1ilhlyv = {
+					__sveltekit_y7jfge = {
 						base: new URL("../..", location).pathname.slice(0, -1)
 					};
 
 					const element = document.currentScript.parentElement;
 
 					Promise.all([
-						import("../../_app/immutable/entry/start.XLqwjsm9.js"),
-						import("../../_app/immutable/entry/app.CA1q5qjd.js")
+						import("../../_app/immutable/entry/start.B_q1hwfL.js"),
+						import("../../_app/immutable/entry/app.-bDmdTVF.js")
 					]).then(([kit, app]) => {
 						kit.start(app, element, {
 							node_ids: [0, 6],

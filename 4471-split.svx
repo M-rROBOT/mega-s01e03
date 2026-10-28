@@ -80,7 +80,9 @@ either.
 
 ## What we changed in the kb
 
-Nothing. #4471 stands as the desk's record of the queue, and
+One link. [#4471](/kb/incidents/4471) now points here, because a page nobody can reach from the
+page they are reading is not in the kb. Otherwise nothing: #4471 stands as the desk's record of
+the queue, and
 [decision 0001](/kb/decisions/0001-dedupe-by-subject) stands as accepted — the kb's own rule is
 that an accepted decision is replaced, never edited. This page is new, and the rule that splits
 the queue is new: `src/lib/kb/split-4471.ts` adds the one-day group that `causes.ts` cannot see,

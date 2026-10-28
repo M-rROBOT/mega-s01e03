@@ -22,6 +22,11 @@ first. The fix is queued.
 Known. One issue, one fix queued.
 </Callout>
 
+<Callout kind="warn">
+Three bugs, not one: [what #4471 holds](/kb/incidents/4471-split) splits these reports by cause
+and counts each. One of them is still open after the 5 October close.
+</Callout>
+
 ## What was merged
 
 <CauseTable ticket={4471} />
