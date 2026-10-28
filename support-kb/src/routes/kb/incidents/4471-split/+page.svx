@@ -1,10 +1,10 @@
 ---
 layout: runbook
 title: '#4471 · three bugs, not one'
-owner: M-rROBOT
+owner: Paweł Pomianek
 status: open
 reviewed: 2026-10-28
-signature: M-rROBOT
+signature: Paweł Pomianek
 ---
 
 <script>
