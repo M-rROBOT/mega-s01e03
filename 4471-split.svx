@@ -4,7 +4,7 @@ title: '#4471 · three bugs, not one'
 owner: Paweł Pomianek
 status: open
 reviewed: 2026-10-28
-signature: Paweł Pomianek
+signature: 'v1.eyJzdWIiOiIxODU0IiwiYXVkIjoiY2hhbGxlbmdlOndoYXQtaXQtc2hvd3MiLCJpYXQiOjE3OTMxNzYxMzksImV4cCI6MTc5MzI2MjUzOX0.nq_SNDDlCRRRFJDOp0OkGtgfZjGjQvXdNsUwe4NOUd8'
 ---
 
 <script>
