@@ -36,8 +36,7 @@ Delivered at the top of this repo, both files:
 The same page lives in the kb, where the kb keeps its pages, and the kb is built out so the
 page sits at the route the desk reads it at:
 [`build/kb/incidents/4471-split.html`](build/kb/incidents/4471-split.html).
-The export came as files, not a site, so the built site is what the desk would see. `support-kb/` is the desk's export with the page
-added; nothing that came in the export was edited.
+The export came as files, not a site, so the built site is what the desk would see. This repo is the desk's export with the page added; nothing in the export was edited.
 
 - in the kb: [`src/routes/kb/incidents/4471-split/+page.svx`](src/routes/kb/incidents/4471-split/+page.svx), served at `/kb/incidents/4471-split`
 - rendered there too: [`src/routes/kb/incidents/4471-split/page.html`](src/routes/kb/incidents/4471-split/page.html) and [`rendered/4471-split.html`](rendered/4471-split.html)
@@ -80,7 +79,7 @@ own rule is that an accepted decision is replaced, never edited. The new page, `
 
 ## Running it
 
-The export is `support-kb/README.md` and `src/`. `svelte.config.js`,
+The export is `README.md` and `src/`. `svelte.config.js`,
 `vite.config.js`, `src/app.html` and the two files under `src/routes/` that are not kb pages are
 the frame it was exported out of, added back so the pages render.
 

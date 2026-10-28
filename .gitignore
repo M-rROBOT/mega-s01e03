@@ -1,3 +1,6 @@
 node_modules/
 .svelte-kit/
 .DS_Store
+
+# leftover build output from an earlier layout; the kb now lives at the repo root
+/support-kb/
